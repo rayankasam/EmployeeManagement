@@ -1,0 +1,47 @@
+Employee Info
+employeeID (PK): int
+email: String
+phoneNumber: String
+password: String (One-Way encrypted)
+firstName: String
+middleName: String (Optional)
+lastName: String
+sinNum: int (Encrypted)
+position: String (Possible NULL)
+shiftType: String (Preference)
+remainingSickdays: int
+remainingVacation days: int
+teamNum: int
+permissionType: int
+employeeStatus: String AC (Active), ML (Medical Leave), PL (Pregnant Leave), IA (Inactive)
+dateJoined: date
+
+Pay Structure
+employeeId (PK): int
+payStructure: String
+amountOwed: float
+wage: float
+bankCode: int
+transitNum: int
+accountNum: int (Include all zeros)
+
+Payments
+employeeId (PK): int
+paymentDate: date
+paymentAmount: float
+
+
+Time Table
+employeeID (PK): int
+Date:date
+time:time
+type:String -> PI (Punch in), PO, BR (Break), EM (Emergency)
+
+
+
+Funtionality
+Payement Owed by employer (Pay Structure, wage, hours, position, bank info, lastPayement)
+Scheduling (shiftType, vacationDays, teamNum, position)
+Tracking used off days (remaining sick and vacation days)
+
+
