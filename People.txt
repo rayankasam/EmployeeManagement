@@ -1,0 +1,100 @@
+john.doe@example.com    (555) 555-1234    John        Doe    123456789    Sales Associate    2    10    3    AC    2020-01-01
+jane.smith@example.com    (555) 555-5678    Jane    Elizabeth    Smith    234567890    Manager    0    5    4    AC    2018-05-15
+michael.jones@example.com    (555) 555-9012    Michael        Jones    345678901    Engineer    3    7    2    AC    2019-11-30
+sarah.thompson@example.com    (555) 555-3456    Sarah        Thompson    456789012    Designer    1    14    4    AC    2017-08-12
+alexander.rodriguez@example.com    (555) 555-7890    Alexander        Rodriguez    567890123    Analyst    2    10    3    AC    2022-02-14
+emily.nguyen@example.com    (555) 555-2345    Emily    Minh    Nguyen    678901234    Developer    4    12    2    AC    2016-06-20
+william.li@example.com    (555) 555-6789    William        Li    789012345    Accountant    1    14    4    AC    2021-09-01
+olivia.wilson@example.com    (555) 555-0123    Olivia        Wilson    890123456    Marketing    0    7    2    AC    2019-03-15
+james.smith@example.com    (555) 555-4567    James        Smith    901234567    Customer Service    2    10    3    AC    2020-08-10
+lauren.chen@example.com    (555) 555-8901    Lauren        Chen    012345678    Human Resources    1    14    4    AC    2017-11-25
+joseph.ng@example.com    (555) 555-2345    Joseph        Ng    234567890    Engineer    3    7    2    AC    2019-02-01
+benjamin.young@example.com	(555) 555-1234	Benjamin		Young	345678901	Sales Associate	1	14	4	AC	2022-04-18
+isabella.nguyen@example.com	(555) 555-5678	Isabella		Nguyen	456789012	Manager	0	5	3	AC	2018-08-08
+william.chen@example.com	(555) 555-9012	William		Chen	567890123	Engineer	2	10	2	AC	2019-06-01
+mia.garcia@example.com	(555) 555-3456	Mia		Garcia	678901234	Designer	1	14	4	AC	2017-10-05
+ethan.jackson@example.com	(555) 555-7890	Ethan		Jackson	789012345	Analyst	2	7	2	AC	2020-03-20
+charlotte.lee@example.com	(555) 555-2345	Charlotte		Lee	890123456	Developer	3	12	4	AC	2016-11-12
+lucas.kim@example.com	(555) 555-6789	Lucas		Kim	901234567	Accountant	1	14	3	AC	2021-01-02
+abigail.ng@example.com	(555) 555-0123	Abigail		Ng	012345678	Marketing	0	7	2	AC	2019-07-30
+noah.lee@example.com	(555) 555-4567	Noah		Lee	234567890	Customer Service	3	10	4	AC	2020-10-12
+emma.chen@example.com	(555) 555-8901	Emma		Chen	345678901	Human Resources	1	14	3	AC	2017-01-25
+jacob.wang@example.com	(555) 555-2345	Jacob		Wang	456789012	Engineer	4	7	2	AC	2018-09-08
+caleb.li@example.com	(555) 555-9012	Caleb		Li	901234567	Analyst	3	5	1	AC	2022-02-22
+sophia.nguyen@example.com	(555) 555-3456	Sophia		Nguyen	456789012	Manager	1	10	2	AC	2019-05-14
+lucas.yu@example.com	(555) 555-7890	Lucas		Yu	678901234	Developer	2	7	2	AC	2021-03-17
+hannah.chan@example.com	(555) 555-2345	Hannah		Chan	345678901	Engineer	1	14	4	AC	2016-09-15
+daniel.huang@example.com	(555) 555-6789	Daniel		Huang	890123456	Designer	0	10	3	AC	2020-06-23
+mia.lam@example.com	(555) 555-0123	Mia		Lam	234567890	Accountant	2	14	2	AC	2017-11-01
+avery.liu@example.com	(555) 555-4567	Avery		Liu	567890123	Customer Service	1	5	4	AC	2020-12-27
+emily.tang@example.com	(555) 555-8901	Emily		Tang	901234567	Marketing	3	14	1	AC	2018-04-06
+lucas.cheung@example.com	(555) 555-2345	Lucas		Cheung	345678901	Human Resources	2	7	2	AC	2022-01-08
+olivia.chu@example.com	(555) 555-6789	Olivia		Chu	890123456	Sales Associate	0	10	3	AC	2019-09-17
+jackson.ng@example.com	(555) 555-0123	Jackson		Ng	234567890	Manager	4	7	4	AC	2020-06-02
+kevin.cheng@example.com	(555) 555-9012	Kevin		Cheng	901234567	Developer	2	14	2	AC	2021-08-11
+elizabeth.wong@example.com	(555) 555-3456	Elizabeth		Wong	456789012	Engineer	1	5	4	AC	2020-04-20
+joshua.yu@example.com	(555) 555-7890	Joshua		Yu	678901234	Designer	3	10	2	AC	2019-02-09
+natalie.lee@example.com	(555) 555-2345	Natalie		Lee	345678901	Accountant	0	5	3	AC	2022-02-01
+ethan.cheung@example.com	(555) 555-6789	Ethan		Cheung	890123456	Customer Service	1	7	4	AC	2018-11-13
+chloe.ng@example.com	(555) 555-0123	Chloe		Ng	234567890	Marketing	2	14	2	AC	2017-06-05
+andrew.ho@example.com	(555) 555-4567	Andrew		Ho	567890123	Sales Associate	1	5	4	AC	2021-03-22
+victoria.kwong@example.com	(555) 555-8901	Victoria		Kwong	901234567	Manager	3	10	1	AC	2019-08-18
+emily.wang@example.com	(555) 555-2345	Emily		Wang	345678901	Analyst	2	14	2	AC	2022-04-16
+jacob.lam@example.com	(555) 555-6789	Jacob		Lam	890123456	Engineer	0	7	3	AC	2018-12-29
+hannah.wu@example.com	(555) 555-0123	Hannah		Wu	234567890	Designer	1	10	3	AC	2020-10-03
+audrey.cheung@example.com	(555) 555-7890	Audrey		Cheung	678901234	Customer Service	2	14	1	AC	2017-12-10
+samuel.yip@example.com	(555) 555-2345	Samuel		Yip	345678901	Accountant	1	7	4	AC	2021-01-20
+avery.chan@example.com	(555) 555-6789	Avery		Chan	890123456	Manager	3	10	2	AC	2019-06-08
+lucas.lau@example.com	(555) 555-0123	Lucas		Lau	234567890	Sales Associate	0	5	3	AC	2022-03-11
+isabella.ng@example.com	(555) 555-4567	Isabella		Ng	567890123	Designer	2	14	1	AC	2018-09-02
+adam.smith@example.com  (555) 555-1234 	Adam 		Smith 234567890 	Customer Service 	2 	10 	3 	AC 	2023-01-01
+natalie.liu@example.com (555) 555-5678 	Natalie 	Liu 	345678901 	Manager 		0 	5 	4 	AC 	2020-05-15
+david.wu@example.com 	(555) 555-9012 	David 	Wu 	456789012 	Engineer 		3 	7 	2 	AC 	2022-11-30
+samantha.kim@example.com (555) 555-3456 	Samantha 	Kim 	567890123 	Designer 		1 	14 	4 	AC 	2018-08-12
+ryan.lee@example.com 	(555) 555-7890 	Ryan 		Lee 	678901234 	Analyst 		2 	10 	3 	AC 	2021-02-14
+kaitlyn.wang@example.com (555) 555-2345 	Kaitlyn 	Wang 	789012345 	Developer 		4 	12 	2 	AC 	2015-06-20
+joshua.young@example.com (555) 555-6789 	Joshua 	Young 890123456 	Accountant 		1 	14 	4 	AC 	2022-09-01
+chloe.nguyen@example.com (555) 555-0123 	Chloe 	Nguyen 901234567 	Marketing 		0 	7 	2 	AC 	2020-03-15
+nathan.kim@example.com (555) 555-4567 	Nathan 	Kim 	012345678 	Customer Service 	2 	10 	3 	AC 	2023-04-10
+ava.lee@example.com 	(555) 555-8901 	Ava 		Lee 	123456789 	Human Resources 	1 	14 	4 	AC 	2018-11-25
+caroline.nguyen@example.com	(555) 555-1234	Caroline		Nguyen	123456789	Sales Associate	2	10	3	AC	2020-12-31
+nathan.kim@example.com	(555) 555-5678	Nathan		Kim	234567890	Manager	0	5	4	AC	2018-07-11
+samantha.wong@example.com	(555) 555-9012	Samantha		Wong	345678901	Engineer	3	7	2	AC	2019-10-25
+matthew.lee@example.com	(555) 555-3456	Matthew		Lee	456789012	Designer	1	14	4	AC	2017-05-08
+victoria.nguyen@example.com	(555) 555-7890	Victoria		Nguyen	567890123	Analyst	2	10	3	AC	2022-06-13
+andrew.chen@example.com	(555) 555-2345	Andrew		Chen	678901234	Developer	4	12	2	AC	2016-02-18
+jessica.wu@example.com	(555) 555-6789	Jessica		Wu	789012345	Accountant	1	14	4	AC	2021-11-09
+david.huang@example.com	(555) 555-0123	David		Huang	890123456	Marketing	0	7	2	AC	2019-02-28
+amanda.lin@example.com	(555) 555-4567	Amanda		Lin	901234567	Customer Service	2	10	3	AC	2020-09-15
+ryan.nguyen@example.com	(555) 555-8901	Ryan		Nguyen	012345678	Human Resources	1	14	4	AC	2017-12-27
+adam.green@example.com 	(555) 555-1234 	Adam 			Green 234567890 Sales Associate 2 10 3 AC 2022-03-05
+sarah.lim@example.com 	(555) 555-5678 	Sarah 		Lim 345678901 Manager 0 5 4 AC 2018-06-20
+matthew.nguyen@example.com (555) 555-9012 Matthew 		Nguyen 456789012 Engineer 3 7 2 AC 2019-12-10
+ashley.smith@example.com (555) 555-3456 	Ashley 		Smith 567890123 Designer 1 14 4 AC 2017-09-15
+jackson.lee@example.com (555) 555-7890 	Jackson 		Lee 678901234 Analyst 2 10 3 AC 2020-04-01
+katie.brown@example.com (555) 555-2345 	Katie 		Brown 789012345 Developer 4 12 2 AC 2016-08-05
+daniel.kim@example.com 	(555) 555-6789 	Daniel 		Kim 890123456 Accountant 1 14 4 AC 2021-10-01
+grace.liu@example.com 	(555) 555-0123 	Grace 		Liu 901234567 Marketing 0 7 2 AC 2019-04-20
+joshua.hwang@example.com (555) 555-4567 	Joshua 		Hwang 012345678 Customer Service 2 10 3 AC 2020-09-10
+isabella.wang@example.com (555) 555-8901 	Isabella 		Wang 234567890 Human Resources 1 14 4 AC 2017-12-25
+andrew.ng@example.com 	(555) 555-2345 	Andrew 		Ng 345678901 Engineer 3 7 2 AC 2019-03-01
+sophia.zhang@example.com (555) 555-9012 	Sophia 		Zhang 456789012 Manager 1 10 2 AC 2019-06-14
+lucas.tran@example.com 	(555) 555-3456 	Lucas 		Tran 567890123 Developer 2 7 2 AC 2021-04-08
+natalie.ng@example.com 	(555) 555-6789 	Natalie 		Ng 890123456 Sales Representative 2 8 3 AC 2023-05-08
+harry.brown@example.com (555) 555-1234 	Harry 		Brown 234567890 Sales Associate 2 10 3 AC 2020-01-01
+ava.davis@example.com 	(555) 555-5678 	Ava 	Marie 	Davis 345678901 Manager 0 5 4 AC 2018-05-15
+joshua.smith@example.com (555) 555-9012 	Joshua 		Smith 456789012 Engineer 3 7 2 AC 2019-11-30
+mia.johnson@example.com (555) 555-3456 	Mia 			Johnson 567890123 Designer 1 14 4 AC 2017-08-12
+andrew.wilson@example.com (555) 555-7890 	Andrew 		Wilson 678901234 Analyst 2 10 3 AC 2022-02-14
+grace.young@example.com (555) 555-2345 	Grace 		Young 789012345 Developer 4 12 2 AC 2016-06-20
+jacob.harris@example.com (555) 555-6789 	Jacob 		Harris 890123456 Accountant 1 14 4 AC 2021-09-01
+lila.smith@example.com 	(555) 555-0123 	Lila 			Smith 901234567 Marketing 0 7 2 AC 2019-03-15
+oliver.jackson@example.com (555) 555-4567 Oliver 		Jackson 012345678 Customer Service 2 10 3 AC 2020-08-10
+jasmine.ng@example.com 	(555) 555-8901 	Jasmine 		Ng 234567890 Human Resources 1 14 4 AC 2017-11-25
+kyle.garcia@example.com (555) 555-2345 	Kyle 			Garcia 345678901 Engineer 3 7 2 AC 2019-02-01
+madison.smith@example.com (555) 555-1234 	Madison 		Smith 456789012 Sales Associate 1 14 4 AC 2022-04-18
+charles.nguyen@example.com (555) 555-5678 Charles 		Nguyen 567890123 Manager 0 5 3 AC 2018-08-08
+henry.wu@example.com 	(555) 555-9012 	Henry 		Wu 678901234 Engineer 2 10 2 AC 2019-06-01
+ella.kim@example.com 	(555) 555-3456 	Ella 			Kim 789012345 Designer 1 14 4 AC 2017-10-05
+jackson.phillips@example.com (555) 555-7890 Jackson 		Phillips 901234567 Analyst 2 7 2 AC 2020-03-20
+nora.baker@example.com 	(555) 555-2345 	Nora 			Baker 890123456 Developer 3 12 4 AC 201
