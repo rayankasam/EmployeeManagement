@@ -1,0 +1,60 @@
+Tables and insert commands.
+
+Tables 
+CREATE TABLE employeePay (
+  employeeID INT NOT NULL PRIMARY KEY,
+  payStructure VARCHAR(45),
+  amountOwned DECIMAL(2),
+  wage DECIMAL(2),
+  bankCode VARCHAR(45),
+  transitNum VARCHAR(45),
+  accountNum VARCHAR(45)
+);
+
+CREATE TABLE employeeInfo (
+  employeeID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  phoneNum VARCHAR(50) NOT NULL UNIQUE,
+  firstName VARCHAR(50) NOT NULL,
+  middleName VARCHAR(50),
+  lastName VARCHAR(50),
+  sinNum INT NOT NULL UNIQUE,
+  position VARCHAR(50),
+  remainingSickDays INT DEFAULT 3,
+  remainingVacationDays INT DEFAULT 14,
+  teamNum INT,
+  permissionType INT NOT NULL,
+  employeeStatus VARCHAR(4) NOT NULL,
+  dateJoined DATE NOT NULL
+);
+
+CREATE TABLE payments (
+    employeeID INT PRIMARY KEY NOT NULL,
+    paymentDate DATETIME NOT NULL,
+    paymentAmount DECIMAL(2) NOT NULL
+);
+
+CREATE TABLE Timetable (
+    timeID INT PRIMARY KEY NOT NULL UNIQUE,
+    employeeID INT PRIMARY KEY NOT NULL UNIQUE,
+    dateAndTime DATETIME NOT NULL,
+    type VARCHAR(4) NOT NULL
+);
+
+EMPLOYEE INFO INSERT 
+
+INSERT INTO employeeInfo (email, phoneNum, firstName,lastName, sinNum, position, remainingSickDays, remainingVacationDays, teamNum, permissionType, employeeStatus, dateJoined)
+
+VALUES ('john.doe@example.com', '(555) 555-1234', 'John', 'Doe', '123456789', 'Sales Associate', 2, 10, 3, 1,'AC', '2020-01-01')
+
+PAY INSERT 
+INSERT INTO Pay Structure (employeeID, payStructure, amountOwned, wage, bankCode, transitNum, accountNum)
+VALUES (1, 'WK', 100.00, 18, 'AAA', '12345', '123456789')
+
+PAYMENTS INSERT
+INSERT INTO Payments (employeeID, paymentDate, paymentAmount)
+VALUES (1, '2023-01-07 12:00:00', 100.00)
+
+TIMETABLE INSERT
+INSERT INTO Time Table (timeID, employeeID, dateAndTime, type)
+VALUES ( 5 , 1, '2023-01-06 15:00:00', MORN)
