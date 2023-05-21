@@ -7,13 +7,17 @@ from pathlib import Path
 
 load_dotenv(Path('./database.env'))
 DB_IP = os.getenv('IP')
-print(f"ip: {DB_IP}; type: {type(DB_IP)}")
-
+DB_PORT = os.getenv('PORT')
+DB_PASSWORD = os.getenv('PASSWORD')
+DB_USER = os.getenv('USER')
+print(DB_USER)
+# Establishing databse connection
 db = mysql.connector.connect(
 host=DB_IP,
-port="3307",
-database="WFMdb",
-password="DaddyRayan$1"
+port=DB_PORT,
+user='root',
+database="WFM_MAIN_INFO",
+password=DB_PASSWORD
 )
 def addToDB():
   ...
