@@ -47,8 +47,11 @@ def addToDB(data):
     try:
         mycursor.execute("SELECT employeeID FROM employeeInfo WHERE sinNum = %s",(data['sinNum'],))
         empID = (mycursor.fetchone())[0]
+
+        # Password hashing
         ph = PasswordHasher()
         hashedPassword = ph.hash(data['password'])
+
         cursor2.execute("INSERT INTO user (email,password,employeeID) VALUES (%s,%s,%s)",(data['email'],hashedPassword,empID))
         db.commit()
         print("Added to user")
@@ -58,27 +61,32 @@ def addToDB(data):
 
 
 
-
+# Gets Information needed to add employee to database
 def getInfo():
     data = {}
-    data['email'] = input("Enter email: ")
-    data['password'] = input("Enter password: ")
-    data['phoneNum'] = input("Enter Phone number: ")
-    data['fName'] = input("Enter First name: ")
+    data['email'] = input("Enter email*: ")
+    data['password'] = input("Enter password*: ")
+    data['phoneNum'] = input("Enter Phone number*: ")
+    data['fName'] = input("Enter First name*: ")
     data['mName'] = input("Enter Middle name: ")
+    data['lName'] = input("Enter Last name: ")
+    data['sinNum'] = input("Enter sin number*: ")
+    data['position'] = input("Enter position: ")
+    
+    # Dealing with optional fields
     if data['mName'] == "":
         data['mName'] = None
-    data['lName'] = input("Enter Last name: ")
     if data['lName'] == "":
         data['lName'] = None
-    data['sinNum'] = input("Enter sin number: ")
-    data['position'] = input("Enter position: ")
     if data['position'] == "":
         data['position'] = None
     return data
+
+
+
 print(f"Welcome to the employee adding system\n{'-'*50}")
 addToDB(getInfo())
 mycursor.close()
+cursor2.close()
 db.commit()
 db.close()
-
