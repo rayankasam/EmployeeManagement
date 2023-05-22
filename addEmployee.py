@@ -28,10 +28,11 @@ database="WFM_MAIN_INFO",
 password=DB_PASSWORD
 )
 mycursor = db.cursor()
+cursor2 = db.cursor()
 
 def addToDB(data):
     date = datetime.today().strftime('%Y-%m-%d')
-
+    print(data)
     # Getting employee into main employee info table
     try:
         mycursor.execute("INSERT INTO employeeInfo (email,phoneNum,firstName,middleName,lastName,sinNum,remainingSickDays,remainingVacationDays,teamNum,permissionType,employeeStatus,dateJoined) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(data['email'],data['phoneNum'],data['fName'],data['mName'],data['lName'],data['sinNum'],DEFAULT_SICK,DEFAULT_VACATION,0,0,DEFAULT_STATUS,date))
@@ -40,15 +41,15 @@ def addToDB(data):
     except:
         db.rollback()
         print("Failed to add employee to database")
-    mycursor.execute("SELECT employeeID FROM employeeInfo WHERE sinNum = %s",(data['sinNum'],))
-    empID = mycursor.fetchone()
-    empID = empID[0]
     
 
     # Putting employee login information into user table
     try:
+        mycursor.execute("SELECT employeeID FROM employeeInfo WHERE sinNum = %s",(data['sinNum'],))
+        empID = (mycursor.fetchone())[0]
         ph = PasswordHasher()
-        mycursor.execute("INSERT INTO user (email,password,employeeID) VALUES (%s,%s,%s)",(data['email'],ph.hash("Password"),empID))
+        hashedPassword = ph.hash(data['password'])
+        cursor2.execute("INSERT INTO user (email,password,employeeID) VALUES (%s,%s,%s)",(data['email'],hashedPassword,empID))
         db.commit()
         print("Added to user")
     except:
@@ -75,19 +76,8 @@ def getInfo():
     if data['position'] == "":
         data['position'] = None
     return data
-print(f"Welcome to the employee adding system\n{'-'*12}")
-addToDB(
-        {
-            'email': 'rayankasam12@gmail.com',
-            'password': 'rayan123',
-            'phoneNum': '6477706663',
-            'fName':'Rayan',
-            'mName': None,
-            'lName': 'Kasam',
-            'sinNum': '234567891',
-            'position': None
-            }
-        )
+print(f"Welcome to the employee adding system\n{'-'*50}")
+addToDB(getInfo())
 mycursor.close()
 db.commit()
 db.close()
