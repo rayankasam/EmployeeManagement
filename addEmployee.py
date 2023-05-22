@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 from datetime import datetime
+from argon2 import PasswordHasher
 
 
 # Getting databse information from env file
@@ -30,12 +31,33 @@ mycursor = db.cursor()
 
 def addToDB(data):
     date = datetime.today().strftime('%Y-%m-%d')
+
+    # Getting employee into main employee info table
     try:
         mycursor.execute("INSERT INTO employeeInfo (email,phoneNum,firstName,middleName,lastName,sinNum,remainingSickDays,remainingVacationDays,teamNum,permissionType,employeeStatus,dateJoined) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(data['email'],data['phoneNum'],data['fName'],data['mName'],data['lName'],data['sinNum'],DEFAULT_SICK,DEFAULT_VACATION,0,0,DEFAULT_STATUS,date))
         db.commit()
+        print("Added to employeeInfo")
     except:
         db.rollback()
-    print("Added to db")
+        print("Failed to add employee to database")
+    mycursor.execute("SELECT employeeID FROM employeeInfo WHERE sinNum = %s",(data['sinNum'],))
+    empID = mycursor.fetchone()
+    empID = empID[0]
+    
+
+    # Putting employee login information into user table
+    try:
+        ph = PasswordHasher()
+        mycursor.execute("INSERT INTO user (email,password,employeeID) VALUES (%s,%s,%s)",(data['email'],ph.hash("Password"),empID))
+        db.commit()
+        print("Added to user")
+    except:
+        db.rollback()
+        print("Failed to add login to database")
+
+
+
+
 def getInfo():
     data = {}
     data['email'] = input("Enter email: ")
@@ -53,7 +75,20 @@ def getInfo():
     if data['position'] == "":
         data['position'] = None
     return data
-print("Welcome to the employee adding system\n--------------------------------------------------------")
-addToDB(getInfo())
+print(f"Welcome to the employee adding system\n{'-'*12}")
+addToDB(
+        {
+            'email': 'rayankasam12@gmail.com',
+            'password': 'rayan123',
+            'phoneNum': '6477706663',
+            'fName':'Rayan',
+            'mName': None,
+            'lName': 'Kasam',
+            'sinNum': '234567891',
+            'position': None
+            }
+        )
+mycursor.close()
+db.commit()
 db.close()
 
