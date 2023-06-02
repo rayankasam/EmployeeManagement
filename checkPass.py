@@ -39,7 +39,5 @@ def getLogin():
     email = input("Enter E-mail: ")
     password = input("Enter Password: ")
     return email, password
-email, password = getLogin()
-print(checkPassword(email,password))
 
 

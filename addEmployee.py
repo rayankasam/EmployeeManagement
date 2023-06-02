@@ -27,10 +27,11 @@ user=DB_USER,
 database="WFM_MAIN_INFO",
 password=DB_PASSWORD
 )
-mycursor = db.cursor()
-cursor2 = db.cursor()
 
 def addToDB(data):
+
+    mycursor = db.cursor()
+    cursor2 = db.cursor()
     date = datetime.today().strftime('%Y-%m-%d')
     print(data)
     # Getting employee into main employee info table
@@ -59,34 +60,17 @@ def addToDB(data):
         db.rollback()
         print("Failed to add login to database")
 
+    mycursor.close()
+    cursor2.close()
+    db.commit()
+    db.close()
 
 
-# Gets Information needed to add employee to database
-def getInfo():
-    data = {}
-    data['email'] = input("Enter email*: ")
-    data['password'] = input("Enter password*: ")
-    data['phoneNum'] = input("Enter Phone number*: ")
-    data['fName'] = input("Enter First name*: ")
-    data['mName'] = input("Enter Middle name: ")
-    data['lName'] = input("Enter Last name: ")
-    data['sinNum'] = input("Enter sin number*: ")
-    data['position'] = input("Enter position: ")
-    
-    # Dealing with optional fields
-    if data['mName'] == "":
-        data['mName'] = None
-    if data['lName'] == "":
-        data['lName'] = None
-    if data['position'] == "":
-        data['position'] = None
-    return data
-
-
-
-print(f"Welcome to the employee adding system\n{'-'*50}")
-addToDB(getInfo())
-mycursor.close()
-cursor2.close()
-db.commit()
-db.close()
+def checkData(data):
+    works = True
+    if data['email'] == "":
+        works = False
+    if data['phoneNum'] == "":
+        works = False
+    if data['fName'] == "":
+        works = False
