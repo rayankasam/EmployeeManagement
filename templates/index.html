@@ -7,7 +7,12 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Employee management</h1>
-    <button type="button" href="/other"></button>
+    {% if session['username'] %}
+      <h1> Logged in as {{session['username']}}</h1>
+      <a href="{{ url_for('addEmployee') }}" <button>Add an Employee</button></a>
+    {% else %}
+      <h1>Welcome! Please enter your email <a href="{{ url_for('login') }}">here.</a></h1>
+
+    {% endif %}
   </body>
 </html>
