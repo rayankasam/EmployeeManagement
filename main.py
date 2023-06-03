@@ -33,7 +33,10 @@ def addEmployee():
             print("Failed to add data")
         return redirect(url_for('index'))
     return render_template("addEmployee.html")
-
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 @app.route("/test")
 def tester():
     error = "Error applied"
