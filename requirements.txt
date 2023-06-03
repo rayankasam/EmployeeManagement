@@ -3,3 +3,4 @@ dotenv
 pathlib
 datetime
 argon2
+flask-login

@@ -25,9 +25,9 @@ password=DB_PASSWORD
 )
 def generatePass():
     password = ""
-    chars = string.ascii_letters() + string.digits()
+    chars = string.ascii_letters + string.digits
     for i in range(random.randint(7,12)):
-        password = password + chars[random.randint(len(chars))-1]
+        password = password + chars[random.randint(0,len(chars))-1]
     return password
 
 mycursor = db.cursor()
@@ -41,6 +41,7 @@ for i in data:
     mycursor.execute("SELECT COUNT(1) FROM user WHERE employeeID = %s",(employeeID,))
     
     if mycursor.fetchone()[0] == 0:
+        ...
 
 #    if mycursor.fetchone()[0] == 0:
 #        #Add to user
