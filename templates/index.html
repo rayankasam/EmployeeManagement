@@ -9,10 +9,11 @@
   <body>
     {% if session['username'] %}
       <h1> Logged in as {{session['username']}}</h1>
-      <a href="{{ url_for('addEmployee') }}" <button>Add an Employee</button></a>
+      <a href="{{ url_for('addEmployee') }}"> <button>Add an Employee</button></a>
+      <a href="{{ url_for('logout') }}"><button>Logout</button></a>
     {% else %}
       <h1>Welcome to the Employee Management page, to use the site you must first login</h1>
-      <p><a href="{{url_for('login')}}">Login!</p>
+      <a href="{{url_for('login')}}"><button>Login!</button>
 
     {% endif %}
   </body>
