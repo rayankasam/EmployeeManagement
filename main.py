@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, url_for, session, request
 from dbInteraction.addEmployee import addToDB
 from dbInteraction.checkPass import checkPassword
+from dbInteraction.getData import getData
 app = Flask(__name__)
 app.secret_key = b"2234JHG3[]opuhmiy757n7ijNT756654"
 error = None
@@ -35,7 +36,7 @@ def addEmployee():
         except:
             print("Failed to add data")
         return redirect(url_for('index'))
-    if session.get('username') is not None:
+    if session.get('username') is not None and getData(session['username'])['permissionType'] == 0:
         return render_template("addEmployee.html")
     else:
         return redirect(url_for('index'))
