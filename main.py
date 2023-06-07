@@ -1,6 +1,6 @@
-from flask import Flask, redirect, render_template, render_template_string,url_for, session, request
-from checkPass import *
-from addEmployee import *
+from flask import Flask, redirect, render_template, url_for, session, request
+from dbInteraction.addEmployee import addToDB
+from dbInteraction.checkPass import checkPassword
 app = Flask(__name__)
 app.secret_key = b"2234JHG3[]opuhmiy757n7ijNT756654"
 error = None
@@ -11,6 +11,9 @@ def index():
 @app.route('/login',methods=['GET','POST'])
 def login():
     if request.method == 'POST':
+        data = request.form.to_dict()
+        if 'email' not in data or 'password' not in data:
+            return redirect(url_for('index'))
         if checkPassword(request.form['email'],request.form['password']):
             session['username'] = request.form['email']
         return redirect(url_for('index'))

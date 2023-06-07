@@ -26,8 +26,12 @@ mycursor = db.cursor()
 def checkPassword(email,password):
     mycursor.execute("SELECT password FROM user WHERE email = %s",(email,))
     print("Query Executed")
-    hashedPass = mycursor.fetchone()[0]
-    print(f"password is {hashedPass}")
+    try:
+        hashedPass = mycursor.fetchone()[0]
+        print(f"password is {hashedPass}")
+    except:
+        print("We couldn't find this email.")
+        return False
     ph = PasswordHasher()
     passwordMatch = False
     try:
