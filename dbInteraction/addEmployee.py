@@ -19,16 +19,16 @@ load_dotenv(Path('./defaults.env'))
 DEFAULT_VACATION=os.getenv('REMAINING_VACATION_DAYS')
 DEFAULT_SICK = os.getenv('REMAINING_SICK_DAYS')
 DEFAULT_STATUS= os.getenv('STATUS')
-# Establishing databse connection
-db = mysql.connector.connect(
-host=DB_IP,
-port=DB_PORT,
-user=DB_USER,
-database="WFM_MAIN_INFO",
-password=DB_PASSWORD
-)
 
 def addToDB(data):
+    # Establishing databse connection
+    db = mysql.connector.connect(
+    host=DB_IP,
+    port=DB_PORT,
+    user=DB_USER,
+    database="WFM_MAIN_INFO",
+    password=DB_PASSWORD
+    )
 
     mycursor = db.cursor()
     cursor2 = db.cursor()

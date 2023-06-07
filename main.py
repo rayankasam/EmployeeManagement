@@ -35,7 +35,10 @@ def addEmployee():
         except:
             print("Failed to add data")
         return redirect(url_for('index'))
-    return render_template("addEmployee.html")
+    if session.get('username') is not None:
+        return render_template("addEmployee.html")
+    else:
+        return redirect(url_for('index'))
 @app.route('/logout')
 def logout():
     session.clear()
