@@ -43,7 +43,18 @@ def addToDB(data):
         db.rollback()
         print("Failed to add employee to database")
     
-
+    # Getting employee into employee pay information table
+    try:
+        mycursor.execute("SELECT employeeID FROM employeeInfo WHERE sinNum = %s", (data['sinNum'],))
+        empID = (mycursor.fetchone())[0]
+        
+        mycursor.execute("INSERT INTO employeePay (employeeID, payStructure, wage, bankCode, transitNum, accountNum) VALUES (%s,%s,%s,%s,%s,%s)",(empID, data['payStructure'],data['wage'],data['bankCode'],data['transitNum'],data['accountNum']))
+        db.commit()
+        print("Added to employeePay")
+    except:
+        db.rollback()
+        print("Failed to add employeePay to database")
+        
     # Putting employee login information into user table
     try:
         mycursor.execute("SELECT employeeID FROM employeeInfo WHERE sinNum = %s",(data['sinNum'],))

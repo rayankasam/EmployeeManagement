@@ -48,7 +48,7 @@ for row in data:
     if mycursor.fetchone()[0] == 0:
          password = generatePass()   
          line = "\n"+ str(email) +"\t"+ str(password) +"\t" + str(employeeID)
-         with open('password.txt', 'a') as fh:
+         with open('pass.txt', 'a') as fh:
             fh.writelines(line)  
 
          ph = PasswordHasher()

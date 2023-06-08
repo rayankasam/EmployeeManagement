@@ -26,6 +26,21 @@
       <p><input type=text name=sinNum size="9">
       <h3>Position</h3>
       <p><input type=text name=position>
+      <h2>Payment Information</h2>
+      <h3>wage</h3>
+      <p><input type=number name=wage pattern="^\d*(\.\d{0,2})?$" min="0">
+      <h3>Pay Structure</h3>
+      <select name="payStructure">
+        <option value="Weekly">Weekly</option>
+        <option value="biweekly">Biweekly</option>
+        <option value="Monthly">Monthly</option>
+      </select>
+      <h3>Bank Code</h3>
+      <p><input type=text name=bankCode>
+      <h3>Transit Number</h3>
+      <p><input type=text name=transitNum>
+      <h3>Account Number</h3>
+      <p><input type=text name=accountNum>
       <p><input type=submit value=Submit>
     </form>
     <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
