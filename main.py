@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, url_for, session, request
 from dbInteraction.addEmployee import addToDB
 from dbInteraction.checkPass import checkPassword
 from dbInteraction.getData import getData
-from userDefinedSpecs.applySpecs import allowedAddEmployee
+from applySpecs import allowedAddEmployee
 app = Flask(__name__)
 app.secret_key = b"2234JHG3[]opuhmiy757n7ijNT756654"
 error = None
