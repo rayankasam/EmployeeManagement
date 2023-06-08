@@ -9,8 +9,12 @@
   <body>
     {% if session['username'] %}
       <h1> Logged in as {{session['username']}}</h1>
+      {% if session['permissions'] == 0 %}
       <a href="{{ url_for('addEmployee') }}"> <button>Add an Employee</button></a>
       <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+      {% else %}
+      <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+      {% endif %}
     {% else %}
       <h1>Welcome to the Employee Management page, to use the site you must first login</h1>
       <a href="{{url_for('login')}}"><button>Login!</button>
@@ -18,3 +22,4 @@
     {% endif %}
   </body>
 </html>
+

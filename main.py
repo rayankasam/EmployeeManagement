@@ -18,6 +18,7 @@ def login():
             return redirect(url_for('index'))
         if checkPassword(request.form['email'],request.form['password']):
             session['username'] = request.form['email']
+            session['permissions'] = getData(session['username'])['permissionType']
         return redirect(url_for('index'))
     return render_template("login.html")
 

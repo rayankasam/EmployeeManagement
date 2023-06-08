@@ -13,7 +13,7 @@
       <h3>email*</h3>
       <p><input type=text name=email>
       <h3>password*</h3>
-      <p><input type=text name=password>
+      <p><input type=text name=password, minlength="5">
       <h3>phoneNum*</h3>
       <p><input type=text name=phoneNum>
       <h3>First Name*</h3>
@@ -23,7 +23,7 @@
       <h3>Last Name</h3>
       <p><input type=text name=lName>
       <h3>Sin number*</h3>
-      <p><input type=text name=sinNum>
+      <p><input type=text name=sinNum size="9">
       <h3>Position</h3>
       <p><input type=text name=position>
       <p><input type=submit value=Submit>
@@ -31,3 +31,4 @@
     <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
   </body>
 </html>
+
