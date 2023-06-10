@@ -1,11 +1,14 @@
 from flask import Flask, redirect, render_template, url_for, session, request
 from dbInteraction.addEmployee import addToDB
 from dbInteraction.checkPass import checkPassword
+from dbInteraction.time import punchIN
+from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
 app = Flask(__name__)
 app.secret_key = b"2234JHG3[]opuhmiy757n7ijNT756654"
 error = None
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -42,10 +45,30 @@ def addEmployee():
         return render_template("addEmployee.html")
     else:
         return redirect(url_for('index'))
+
+
+@app.route('/shiftPunches', methods=['GET', 'POST'])
+def shiftPunches():
+    ID = getData(session['username'])['employeeID']
+    if request.method == 'POST':
+        data = request.form.get('punch')
+        print(data)
+        print(ID)
+        if (data == 'IN'):
+            punchIN(ID)
+        elif (data == 'OUT'):
+            punchOut(ID)
+        return redirect(url_for('index'))
+    return render_template("shiftPunches.html")
+        
+    
+        
+    
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
 @app.route("/test")
 def tester():
     error = "Error applied"
