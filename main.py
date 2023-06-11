@@ -2,6 +2,7 @@ from flask import Flask, redirect, render_template, url_for, session, request
 from dbInteraction.addEmployee import addToDB
 from dbInteraction.checkPass import checkPassword
 from dbInteraction.time import punchIN
+from dbInteraction.time import lastPunch
 from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
@@ -52,12 +53,11 @@ def shiftPunches():
     ID = getData(session['username'])['employeeID']
     if request.method == 'POST':
         data = request.form.get('punch')
-        print(data)
-        print(ID)
         if (data == 'IN'):
             punchIN(ID)
         elif (data == 'OUT'):
             punchOut(ID)
+        session['lastPunch'] = lastPunch(ID)
         return redirect(url_for('index'))
     return render_template("shiftPunches.html")
         

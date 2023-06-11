@@ -9,8 +9,11 @@
   <body>
      <h1> Logged in as {{session['username']}}</h1>
         <form method="post">
+        {% if session['lastPunch'] == 'OUT' %} 
         <button type="submit" name="punch" value="IN">Punch IN</button>
+        {% else %}
         <button type="submit" name="punch" value="OUT">Punch OUT</button>
+        {% endif %}
         </form>
 
     <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>

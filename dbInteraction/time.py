@@ -25,12 +25,9 @@ def punchIN(ID):
     punchTime = datetime.now()
     print(punchTime)
     try:
+        
         mycursor.execute(
-                "SELECT MAX(timeID) FROM timetable WHERE employeeID = %s", (ID,))
-        lastTimeID = mycursor.fetchone()
-        TimeID = lastTimeID[0] + 1
-        mycursor.execute(
-            "INSERT INTO timetable (timeID, punchType, dateAndTime ,employeeID) VALUES (%s, %s,%s,%s)", (TimeID, 'IN', punchTime, ID))
+            "INSERT INTO timetable ( punchType, dateAndTime ,employeeID) VALUES (%s,%s,%s)", ( 'IN', punchTime, ID))
         mycursor.close()
         db.commit()
         db.close()
@@ -53,12 +50,9 @@ def punchOut(ID):
     try:
         mycursor = db.cursor()
         punchTime = datetime.now()
+          
         mycursor.execute(
-            "SELECT MAX(timeID) FROM timetable WHERE employeeID = %s", (ID,))
-        lastTimeID = mycursor.fetchone()
-        timeID = lastTimeID[0] + 1        
-        mycursor.execute(
-            "INSERT INTO timetable ( timeID, punchType, dateAndTime ,employeeID) VALUES (%s,%s,%s,%s)", (timeID,'OUT', punchTime, ID))
+            "INSERT INTO timetable ( punchType, dateAndTime ,employeeID) VALUES (%s,%s,%s)", ('OUT', punchTime, ID))
         db.commit()
         mycursor.close()
         print("Added punch out to user")
@@ -71,7 +65,7 @@ def punchOut(ID):
         print("Failed to add punch to the database:", e)
 
 
-def lastPunchTime(ID):
+def lastPunch(ID):
     db = mysql.connector.connect(
         host=DB_IP,
         port=DB_PORT,
@@ -80,7 +74,12 @@ def lastPunchTime(ID):
         password=DB_PASSWORD
     )
     mycursor = db.cursor()
-    mycursor.execute("SELECT MAX(dateAndTime) FROM timetable WHERE employeeID = %s", (ID,))
+    mycursor.execute(
+        "SELECT punchType FROM timetable WHERE employeeID = %s AND dateAndTime = (SELECT MAX(dateAndTime) FROM timetable WHERE employeeID = %s)", (ID, ID))
+
     lastPunch = mycursor.fetchone()
-    lastPunchT = lastPunch[0] if lastPunch[0] else None
-    return lastPunchT
+    if lastPunch is None or lastPunch[0] is None:
+        return 'OUT'
+
+    else:
+        return lastPunch[0]
