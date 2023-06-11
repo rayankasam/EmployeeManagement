@@ -83,3 +83,25 @@ def lastPunch(ID):
 
     else:
         return lastPunch[0]
+#Ignore this function
+#gonna have to figure out a way to make it work later, like self update.
+def currentShift(ID):
+    db = mysql.connector.connect(
+        host=DB_IP,
+        port=DB_PORT,
+        user=DB_USER,
+        database="WFM_MAIN_INFO",
+        password=DB_PASSWORD
+    )
+    mycursor = db.cursor()
+    mycursor.execute(
+        "SELECT punchType, dateAndTime FROM timetable WHERE employeeID = %s ORDER BY dateAndTime DESC LIMIT 1", (ID,))
+    lastPunch = mycursor.fetchone()
+    if lastPunch is None or lastPunch[0] is None or lastPunch[1] is none or lastPunch[0]=='OUT':
+        return '0'
+
+    else:
+        return str(datetime.now() - lastPunch[0]).total_seconds() / 60.0
+
+
+

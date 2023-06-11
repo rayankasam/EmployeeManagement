@@ -3,6 +3,7 @@ from dbInteraction.addEmployee import addToDB
 from dbInteraction.checkPass import checkPassword
 from dbInteraction.time import punchIN
 from dbInteraction.time import lastPunch
+from dbInteraction.time import currentShift
 from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
