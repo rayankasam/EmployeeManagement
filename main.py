@@ -4,6 +4,7 @@ from dbInteraction.checkPass import checkPassword
 from dbInteraction.time import punchIN
 from dbInteraction.time import lastPunch
 from dbInteraction.time import currentShift
+from dbInteraction.timeWorked import today
 from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
@@ -64,11 +65,13 @@ def shiftPunches():
         
 @app.route('/timeWorked', methods=['GET', 'POST'])
 def timeWorked():
+    ID = getData(session['username'])['employeeID']
     if request.method == 'POST':
         data = request.form.to_dict()
         print(data)   
         if data['dates'] == 'TODAY':
             print("today")
+            print(today(ID))
             
         elif data['dates'] == 'WTD':
             print("WTD")
