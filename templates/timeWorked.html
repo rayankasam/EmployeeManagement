@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+
+<form method="POST" action="/timeWorked">
+    <select name="dates" onchange="Input(this)">
+        <option value="TODAY">Today</option>
+        <option value="WTD">Week To Date</option>
+        <option value="MTD">Month to Date</option>
+        <option value="CD">Certain Date</option>
+        <option value="CY">Certain Year</option>
+        <option value="CUS">Custom Dates</option>
+        <option value="CM">Certain Month</option>
+        <option value="BEFORE">Before Date</option>
+        <option value="AFTER">After Date</option>
+    </select>
+
+    <div id="CertainDate" style="display: none;">
+        <input type="date" name="certainDate">
+    </div>
+
+    <div id="CertainYear" style="display: none;">
+        <input type="year" name="certainYear">
+    </div>
+
+    <div id="CertainMonth" style="display: none;">
+        <input type="month" name="certainMonth">
+    </div>
+
+     <div id="Custom" style="display: none;">
+        <input type="date" name="startDate">
+        <input type="date" name="endDate">
+    </div>
+
+    <div id="afterDate" style="display: none;">
+        <input type="date" name="afterDate">
+    </div>
+
+    <div id="beforeDate" style="display: none;">
+        <input type="date" name="beforeDate">
+    </div>
+          <p><input type=submit value=Submit>
+
+    
+</form>
+<a href="{{ url_for('index') }}"><button>Back to Dashboard</button></a>
+
+<script>
+    function Input(option) {
+        var sOption = option.value;
+        var certainDate = document.getElementById('CertainDate');
+        var certainYear = document.getElementById('CertainYear');
+        var certainMonth = document.getElementById('CertainMonth');
+        var custom = document.getElementById('Custom');
+        var after = document.getElementById('afterDate');
+        var before = document.getElementById('beforeDate');
+        
+        if (sOption === "CD") {
+            certainDate.style.display = "block";
+            certainYear.style.display = "none";
+            certainMonth.style.display = "none";
+            custom.style.display = "none";
+            before.style.display = "none";
+            after.style.display = "none";
+            certainDate.querySelector('input').setAttribute('required', true);
+        } else if (sOption === "CY") {
+            certainYear.style.display = "block";
+            certainDate.style.display = "none";
+            certainMonth.style.display = "none";
+            custom.style.display = "none";
+            before.style.display = "none";
+            after.style.display = "none";
+            certainYear.querySelector('input').setAttribute('required', true);
+        } else if (sOption === "CM") {
+            certainDate.style.display = "none";
+            certainYear.style.display = "none";
+            certainMonth.style.display = "block";
+            custom.style.display = "none";
+            before.style.display = "none";
+            after.style.display = "none";
+            certainMonth.querySelector('input').setAttribute('required', true);
+        } else if (sOption === "CUS") {
+            certainDate.style.display = "none";
+            certainYear.style.display = "none";
+            certainMonth.style.display = "none";
+            custom.style.display = "block";
+            before.style.display = "none";
+            after.style.display = "none";
+            custom.querySelector('input').setAttribute('required', true);
+        } else if (sOption === "AFTER") {
+            certainDate.style.display = "none";
+            certainYear.style.display = "none";
+            certainMonth.style.display = "none";
+            custom.style.display = "none";
+            before.style.display = "none";
+            after.style.display = "block";
+            before.querySelector('input').setAttribute('required', true);
+        } else if (sOption === "BEFORE") {
+            certainDate.style.display = "none";
+            certainYear.style.display = "none";
+            certainMonth.style.display = "none";
+            custom.style.display = "none";
+            before.style.display = "block";
+            after.style.display = "none";
+            after.querySelector('input').setAttribute('required', true);
+        } else{
+            certainDate.style.display = "none";
+            certainYear.style.display = "none";
+            certainMonth.style.display = "none";
+            custom.style.display = "none";
+            before.style.display = "none";
+            after.style.display = "none";
+        }
+      }
+</script>
+  
+  
+  </body>
+</html>
+

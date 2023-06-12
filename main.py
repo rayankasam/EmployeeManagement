@@ -62,9 +62,41 @@ def shiftPunches():
         return redirect(url_for('index'))
     return render_template("shiftPunches.html")
         
-    
+@app.route('/timeWorked', methods=['GET', 'POST'])
+def timeWorked():
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        print(data)   
+        if data['dates'] == 'TODAY':
+            print("today")
+            
+        elif data['dates'] == 'WTD':
+            print("WTD")
+            
+        elif data['dates'] == 'MTD':
+            print("MTD")
+            
+        elif data['dates'] == 'CD':
+            print(data['certainDate'])
+            
+        elif data['dates'] == 'CY':
+            print(data['certainYear'])
+            
+        elif data['dates'] == 'CM':
+            print(data['certainMonth'])
+            
+        elif data['dates'] == 'BEFORE':
+            print(data["beforeDate"])
+            
+        elif data['dates'] == 'AFTER':
+            print(data["afterDate"])
+            
+        elif data['dates'] == 'CUS':
+            print(data["startDate"])
+            print(data["endDate"])
+        return redirect(url_for('index'))
+    return render_template("timeWorked.html")
         
-    
 @app.route('/logout')
 def logout():
     session.clear()
