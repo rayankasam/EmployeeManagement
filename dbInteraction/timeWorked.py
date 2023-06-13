@@ -25,12 +25,12 @@ def timeWorked(shifts):
             password=DB_PASSWORD
         )
         mycursor = db.cursor()
-        mycursor.close()
-        db.close()
         mycursor.execute(
             "SELECT * FROM timetable WHERE dateAndTime > %s AND employeeID = %s ORDER BY dateAndTime ASC LIMIT 1", (shifts[-1][2], ID))
         lastPunch = mycursor.fetchall()
         shifts.append(lastPunch)
+        mycursor.close()
+        db.close()
 
 
     if shifts[0][3] == 'OUT':
