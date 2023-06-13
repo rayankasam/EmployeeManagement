@@ -10,6 +10,7 @@
 
 <form method="POST" action="/timeWorked">
     <select name="dates" onchange="Input(this)">
+        <option value="SELECT">Select An option</option>
         <option value="TODAY">Today</option>
         <option value="WTD">Week To Date</option>
         <option value="MTD">Month to Date</option>
@@ -45,10 +46,15 @@
     <div id="beforeDate" style="display: none;">
         <input type="date" name="beforeDate">
     </div>
-          <p><input type=submit value=Submit>
+          <p><input type=submit value=Submit></p>
 
     
 </form>
+
+<div id="output"></div>
+        <p class="output-statement">{{output}}</p>
+</div>
+
 <a href="{{ url_for('index') }}"><button>Back to Dashboard</button></a>
 
 <script>

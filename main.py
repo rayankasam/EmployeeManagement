@@ -5,6 +5,14 @@ from dbInteraction.time import punchIN
 from dbInteraction.time import lastPunch
 from dbInteraction.time import currentShift
 from dbInteraction.timeWorked import today
+from dbInteraction.timeWorked import weekToDay
+from dbInteraction.timeWorked import monthToDay
+from dbInteraction.timeWorked import custom
+from dbInteraction.timeWorked import certainDate
+from dbInteraction.timeWorked import beforeDate
+from dbInteraction.timeWorked import afterDate
+from dbInteraction.timeWorked import certainMonth
+from dbInteraction.timeWorked import certainYear
 from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
@@ -71,32 +79,44 @@ def timeWorked():
         print(data)   
         if data['dates'] == 'TODAY':
             print("today")
-            print(today(ID))
-            
+            output = today(ID)
+            return render_template('timeWorked.html', output=output)
+
         elif data['dates'] == 'WTD':
-            print("WTD")
-            
+            output = weekToDay(ID)
+            return render_template('timeWorked.html', output=output)
+        
         elif data['dates'] == 'MTD':
-            print("MTD")
+            output = monthToDay(ID)
+            return render_template('timeWorked.html', output=output)
             
         elif data['dates'] == 'CD':
-            print(data['certainDate'])
+            output = certainDate(ID, data['certainDate'])
+            return render_template('timeWorked.html', output=output)
             
         elif data['dates'] == 'CY':
-            print(data['certainYear'])
+            output = certainYear(ID, data['certainYear'])
+            return render_template('timeWorked.html', output=output)
             
         elif data['dates'] == 'CM':
-            print(data['certainMonth'])
+            output = certainMonth(ID, data['certainMonth'])
+            return render_template('timeWorked.html', output=output)
             
         elif data['dates'] == 'BEFORE':
-            print(data["beforeDate"])
+            output = beforeDate(ID, data["beforeDate"])
+            return render_template('timeWorked.html', output=output)
+
             
         elif data['dates'] == 'AFTER':
-            print(data["afterDate"])
+            output = afterDate(ID, data["afterDate"])
+            return render_template('timeWorked.html', output=output)
             
         elif data['dates'] == 'CUS':
-            print(data["startDate"])
-            print(data["endDate"])
+            output = custom(ID, data["startDate"], data["endDate"])
+            return render_template('timeWorked.html', output=output)
+
+        else:
+            return render_template("timeWorked.html")
         return redirect(url_for('index'))
     return render_template("timeWorked.html")
         
