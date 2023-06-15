@@ -14,12 +14,12 @@
       <a href="{{ url_for('logout') }}"><button>Logout</button></a>
       <a href="{{ url_for('shiftPunches') }}"><button>Shift Punches</button></a>
       <a href="{{ url_for('timeWorked') }}"><button>Time Worked</button></a>
-
+      <a href="{{ url_for('addShifts') }}"><button>Add Employee Shifs</button></a>
       {% else %}
       <a href="{{ url_for('logout') }}"><button>Logout</button></a>
       <a href="{{ url_for('shiftPunches') }}"><button>Shift Punches</button></a>
       <a href="{{ url_for('timeWorked') }}"><button>Time Worked</button></a>
-
+       
       {% endif %}
     {% else %}
       <h1>Welcome to the Employee Management page, to use the site you must first login</h1>

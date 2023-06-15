@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <form method="post">
+
+      <p>Select an Employee if you do not see the employee you can add them</p>
+      <select name="employee">
+        <option value="none">Select and Employee</option>
+        {% for employee in employees %}
+        <option value="{{ employee[2] }}">{{ employee[0] }} {{ employee[1] }} {{ employee[2] }}</option>
+        {% endfor %}
+      </select>
+
+      <h3>Shift Start Time</h3>
+      <p><input type=datetime-local name=startTime>
+      <h3>Shift End time</h3>
+      <p><input type=datetime-local name=endTime>
+      <select name="shiftType">
+        <option value="regular">Regular</option>
+        <option value="rvertime">Overtime</option>
+        <option value="vacation">vacation</option>
+      </select>
+      <p><input type=submit value=Submit>
+      </form>
+    <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
+  </body>
+</html>
+
