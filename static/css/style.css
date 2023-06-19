@@ -1,0 +1,15 @@
+.loginForm {
+    margin: auto;
+    justify-content: center;
+    border: 1px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: auto;
+    min-height: 20vh;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10%;
+}

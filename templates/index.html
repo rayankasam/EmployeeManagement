@@ -8,7 +8,7 @@
   </head>
   <body>
     {% if session['username'] %}
-      <h1> Logged in as {{session['username']}}</h1>
+      <h1> Logged in as {{session['firstName']}}</h2>
       {% if session['permissions'] == 0 %}
       <a href="{{ url_for('addEmployee') }}"> <button>Add an Employee</button></a>
       <a href="{{ url_for('logout') }}"><button>Logout</button></a>

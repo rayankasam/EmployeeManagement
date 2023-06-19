@@ -35,6 +35,7 @@ def login():
         if checkPassword(request.form['email'],request.form['password']):
             session['username'] = request.form['email']
             session['permissions'] = getData(session['username'])['permissionType']
+            session['firstName'] = getData(session['username'])['firstName']
         return redirect(url_for('index'))
     return render_template("login.html")
 
@@ -119,7 +120,6 @@ def timeWorked():
 
         else:
             return render_template("timeWorked.html")
-        return redirect(url_for('index'))
     return render_template("timeWorked.html")
 
 
