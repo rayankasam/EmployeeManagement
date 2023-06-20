@@ -1,15 +1,20 @@
+html {
+    height: 100%;
+}
+body {
+    background: black;
+
+}
 .loginForm {
-    margin: auto;
-    justify-content: center;
-    border: 1px solid;
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 400px;
+    padding: 40px;
     transform: translate(-50%, -50%);
-    width: 60vw;
-    height: auto;
-    min-height: 20vh;
-    padding: 10px;
-    text-align: center;
-    border-radius: 10%;
+    background: #0d151f;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    color: white;
 }
