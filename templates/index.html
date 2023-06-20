@@ -4,26 +4,30 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
   </head>
   <body>
     {% if session['username'] %}
-      <h1> Logged in as {{session['firstName']}}</h2>
-      {% if session['permissions'] == 0 %}
-      <a href="{{ url_for('addEmployee') }}"> <button>Add an Employee</button></a>
-      <a href="{{ url_for('logout') }}"><button>Logout</button></a>
-      <a href="{{ url_for('shiftPunches') }}"><button>Shift Punches</button></a>
-      <a href="{{ url_for('timeWorked') }}"><button>Time Worked</button></a>
-      <a href="{{ url_for('addShifts') }}"><button>Add Employee Shifs</button></a>
-      {% else %}
-      <a href="{{ url_for('logout') }}"><button>Logout</button></a>
-      <a href="{{ url_for('shiftPunches') }}"><button>Shift Punches</button></a>
-      <a href="{{ url_for('timeWorked') }}"><button>Time Worked</button></a>
-       
-      {% endif %}
+      <div class="dashboard">
+        <h1> Logged in as {{session['firstName']}}</h2>
+        {% if session['permissions'] == 0 %}
+        <a href="{{ url_for('addEmployee') }}"> <button type="button" class="btn btn-primary">Add an Employee</button></a>
+        <a href="{{ url_for('addShifts') }}"><button type="button" class="btn btn-primary">Add Employee Shifs</button></a>
+         
+        {% endif %}
+        <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-primary">Logout</button></a>
+        <a href="{{ url_for('shiftPunches') }}"><button type="button" class="btn btn-primary">Shift Punches</button></a>
+        <a href="{{ url_for('timeWorked') }}"><button type="button" class="btn btn-primary">Time Worked</button></a>
+      </div>
     {% else %}
-      <h1>Welcome to the Employee Management page, to use the site you must first login</h1>
-      <a href="{{url_for('login')}}"><button>Login!</button>
+      <div class="Forms center">
+        <h1>Welcome to the Employee Management page, to use the site you must first login</h1>
+        <a href="{{url_for('login')}}"><button type="button" class="btn btn-primary">Login!</button></a>
+      </div>
+      
 
     {% endif %}
   </body>
