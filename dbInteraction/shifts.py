@@ -68,3 +68,18 @@ def addShifts(ID, startTime, endTime, shiftType):
     except Exception as error:
        print(error)
        return "Failed to add shift, Please Try again."
+def lastPunch(EMPID):
+    db = mysql.connector.connect(
+        host=DB_IP,
+        port=DB_PORT,
+        user=DB_USER,
+        database="WFM_MAIN_INFO",
+        password=DB_PASSWORD
+    )
+    try:
+        mycursor = db.cursor()
+        mycursor.execute("SELECT punchType FROM timetable WHERE employeeID = %s ORDER BY dateAndTime DESC LIMIT 1",(EMPID,))
+        punch = mycursor.fetchone()
+        return punch[0]
+    except Exception as e:
+        print(e)

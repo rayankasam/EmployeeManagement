@@ -15,6 +15,7 @@ from dbInteraction.timeWorked import certainMonth
 from dbInteraction.timeWorked import certainYear
 from dbInteraction.shifts import getPeople
 from dbInteraction.shifts import addShifts
+from dbInteraction.shifts import lastPunch
 from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
@@ -24,7 +25,16 @@ error = None
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if 'EMPID' in session:
+        currentPunch = lastPunch(session['EMPID'])
+        # Formatting duration of current shift
+        currentDuration,_,_ = str(currentShift(session['EMPID'])).partition('.')
+        currentDuration = currentDuration[:-3]
+    else:
+        currentDuration = False
+        currentPunch = False
+    print(currentPunch)
+    return render_template('index.html',currentDuration = currentDuration, currentPunch = currentPunch)
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -36,6 +46,7 @@ def login():
             session['username'] = request.form['email']
             session['permissions'] = getData(session['username'])['permissionType']
             session['firstName'] = getData(session['username'])['firstName']
+            session['EMPID'] = getData(session['username'])['employeeID']
         return redirect(url_for('index'))
     return render_template("login.html")
 

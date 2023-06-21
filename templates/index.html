@@ -18,9 +18,15 @@
         <a href="{{ url_for('addShifts') }}"><button type="button" class="btn btn-primary">Add Employee Shifs</button></a>
          
         {% endif %}
-        <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-primary">Logout</button></a>
         <a href="{{ url_for('shiftPunches') }}"><button type="button" class="btn btn-primary">Shift Punches</button></a>
         <a href="{{ url_for('timeWorked') }}"><button type="button" class="btn btn-primary">Time Worked</button></a>
+        <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-secondary">Logout</button></a>
+        <div>
+          <h3>Currently punched {{ currentPunch }}</h3>
+          {% if currentPunch == "IN" %}
+            <h4>Duration: {{ currentDuration }}</h4>
+          {% endif%}
+        </div>
       </div>
     {% else %}
       <div class="Forms center">

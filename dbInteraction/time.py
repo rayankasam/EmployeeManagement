@@ -2,7 +2,7 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from argon2 import PasswordHasher
 
 load_dotenv(Path('./database.env'))
@@ -97,11 +97,11 @@ def currentShift(ID):
     mycursor.execute(
         "SELECT punchType, dateAndTime FROM timetable WHERE employeeID = %s ORDER BY dateAndTime DESC LIMIT 1", (ID,))
     lastPunch = mycursor.fetchone()
-    if lastPunch is None or lastPunch[0] is None or lastPunch[1] is none or lastPunch[0]=='OUT':
+    if lastPunch is None or lastPunch[0] is None or lastPunch[1] is None or lastPunch[0]=='OUT':
         return '0'
 
     else:
-        return str(datetime.now() - lastPunch[0]).total_seconds() / 60.0
+        return (datetime.now() - lastPunch[1])
 
 
 
