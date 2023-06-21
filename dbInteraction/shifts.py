@@ -46,7 +46,7 @@ def getPeople():
        return "no employees found"
 
 
-def addShifts(ID, startTime, endTime, shiftType):
+def shifts(ID, startTime, endTime, shiftType):
     db = mysql.connector.connect(
         host=DB_IP,
         port=DB_PORT,
@@ -56,11 +56,11 @@ def addShifts(ID, startTime, endTime, shiftType):
     )
     try:
         mycursor = db.cursor()
-        mycursor.execute("INSERT INTO shifts (employeeID,  startTime, endTime,lastName, entryType) VALUES (%s,%s,%s,%s)",
+        mycursor.execute("INSERT INTO shifts (employeeID,  startTime, endTime, entryType) VALUES (%s,%s,%s,%s)",
                          (ID,  startTime, endTime, shiftType))
         mycursor.close()
         db.commit()
-        print("Added to employeeInfo")
+        print("Added to shifts")
         
         db.close()
         return "Shift Sussfully entered"

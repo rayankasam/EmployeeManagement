@@ -16,6 +16,7 @@ from dbInteraction.timeWorked import certainYear
 from dbInteraction.shifts import getPeople
 from dbInteraction.shifts import addShifts
 from dbInteraction.shifts import lastPunch
+from dbInteraction.shifts import shifts
 from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
@@ -145,7 +146,8 @@ def addShifts():
         print(data['endTime'])
         print(data['shiftType'])
         
-        addShifts(data['employee'], data['startTime'], data['endTime'], data['shiftType'])
+        shifts(data['employee'], data['startTime'],
+                  data['endTime'], data['shiftType'])
         return redirect(url_for('index'))
     return render_template("addShifts.html", employees=employees)     
        
