@@ -14,7 +14,7 @@ from dbInteraction.timeWorked import afterDate
 from dbInteraction.timeWorked import certainMonth
 from dbInteraction.timeWorked import certainYear
 from dbInteraction.shifts import getPeople
-from dbInteraction.shifts import addShifts
+#from dbInteraction.shifts import addShifts
 from dbInteraction.shifts import lastPunch
 from dbInteraction.shifts import shifts
 from dbInteraction.time import punchOut
@@ -48,6 +48,7 @@ def login():
             session['permissions'] = getData(session['username'])['permissionType']
             session['firstName'] = getData(session['username'])['firstName']
             session['EMPID'] = getData(session['username'])['employeeID']
+            session['lastPunch'] = lastPunch(session['EMPID'])
         return redirect(url_for('index'))
     return render_template("login.html")
 
