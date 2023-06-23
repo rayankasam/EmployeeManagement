@@ -9,7 +9,7 @@
   <body>
      <h1> Logged in as {{session['username']}}</h1>
         <form method="post">
-        {% if session['EMPID'] == 'IN' %} 
+        {% if session['lastPunch'] == 'IN' %} 
         <button type="submit" name="punch" value="OUT">Punch OUT</button>
         {% else %}
         <button type="submit" name="punch" value="IN">Punch IN</button>

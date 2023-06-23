@@ -76,6 +76,7 @@ def addEmployee():
 
 @app.route('/shiftPunches', methods=['GET', 'POST'])
 def shiftPunches():
+    
     ID = getData(session['username'])['employeeID']
     if request.method == 'POST':
         data = request.form.get('punch')
@@ -85,6 +86,7 @@ def shiftPunches():
             punchOut(ID)
         session['lastPunch'] = lastPunch(ID)
         return redirect(url_for('index'))
+    session['lastPunch'] = lastPunch(ID)
     return render_template("shiftPunches.html")
         
 @app.route('/timeWorked', methods=['GET', 'POST'])
