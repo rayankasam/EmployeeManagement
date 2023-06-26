@@ -229,6 +229,50 @@ nav ul li a{
 }
 
 
-.clock li.number:nth-child(n) {
-    transform: rotate(n*30deg);
+.clock li.number:nth-child(1) {
+    transform: rotate(30deg);
+}
+
+.clock li.number:nth-child(2) {
+    transform: rotate(60deg);
+}
+
+.clock li.number:nth-child(3) {
+    transform: rotate(90deg);
+}
+
+.clock li.number:nth-child(4) {
+    transform: rotate(120deg);
+}
+
+.clock li.number:nth-child(5) {
+    transform: rotate(150deg);
+}
+
+.clock li.number:nth-child(6) {
+    transform: rotate(180deg);
+}
+
+.clock li.number:nth-child(7) {
+    transform: rotate(210deg);
+}
+
+.clock li.number:nth-child(8) {
+    transform: rotate(240deg);
+}
+
+.clock li.number:nth-child(9) {
+    transform: rotate(270deg);
+}
+
+.clock li.number:nth-child(10) {
+    transform: rotate(300deg);
+}
+
+.clock li.number:nth-child(11) {
+    transform: rotate(330deg);
+}
+
+.clock li.number:nth-child(12) {
+    transform: rotate(360deg);
 }
