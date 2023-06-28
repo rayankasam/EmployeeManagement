@@ -14,7 +14,7 @@ from dbInteraction.timeWorked import afterDate
 from dbInteraction.timeWorked import certainMonth
 from dbInteraction.timeWorked import certainYear
 from dbInteraction.shifts import getPeople
-#from dbInteraction.shifts import addShifts
+from dbInteraction.shifts import getShifts
 from dbInteraction.shifts import lastPunch
 from dbInteraction.shifts import shifts
 from dbInteraction.time import punchOut
@@ -152,7 +152,16 @@ def addShifts():
         shifts(data['employee'], data['startTime'],
                   data['endTime'], data['shiftType'])
         return redirect(url_for('index'))
-    return render_template("addShifts.html", employees=employees)     
+    return render_template("addShifts.html", employees=employees) 
+
+
+@app.route('/shifts', methods=['GET', 'POST'])
+def shifts():
+    empID = getData(session['username'])['employeeID']
+    allShifts = getShifts(empID)
+    print(allShifts)
+    return render_template("shifts.html", allShifts=allShifts)
+
        
 @app.route('/logout')
 def logout():

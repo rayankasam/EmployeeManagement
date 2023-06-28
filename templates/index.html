@@ -20,6 +20,7 @@
         {% endif %}
         <a href="{{ url_for('shiftPunches') }}"><button type="button" class="btn btn-primary">Shift Punches</button></a>
         <a href="{{ url_for('timeWorked') }}"><button type="button" class="btn btn-primary">Time Worked</button></a>
+        <a href="{{ url_for('shifts') }}"><button type="button" class="btn btn-primary">Shifts</button></a>
         <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-secondary">Logout</button></a>
         <div>
           <h3>Currently punched {{ currentPunch }}</h3>
