@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@event-calendar/core@1.5.0/index.css">
 
     <link href="css/style.css" rel="stylesheet">
   </head>
@@ -18,9 +19,28 @@
       <a class="chere" href="/"><button class="logout">Logout</button></a>
     </nav>
   </div> 
-
+    {% for shift in allShifts %}
+        <h1>{{ shift[0] }} {{ shift[1] }}</h1>
+        {% endfor %}
     <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
-  
+    <script>
+    import Calendar from '@event-calendar/core/src/Calendar.svelte';
+    import TimeGrid from '@event-calendar/time-grid/src/TimeGrid.svelte';
+
+    let plugins = [TimeGrid];
+    let options = {
+        view: 'timeGridWeek',
+        events: [
+            // your list of events
+        ]
+    };
+</script>
+
+<Calendar {plugins} {options} />
+
+
+
+\
   </body>
 </html>
 
