@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet"> 
    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css">
   </head>
   <body>
     <div class="navbar">
@@ -23,13 +22,11 @@
         {% endfor %}
     <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
   <div id="calendar"></div>
-  <script>
     
-    let calendarEl = document.getElementById('calendar');
-    
-    let calendar = new FullCalendar.Calendar(calendarEl,{});
-    calendar.render();
-  </script>
+       <script src="{{ url_for('static', filename='dist/bundle.js') }}"></script>
+
+
+  
   </body>
 </html>
 
