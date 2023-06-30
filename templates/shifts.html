@@ -4,10 +4,9 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@event-calendar/core@1.5.0/index.css">
-
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet"> 
+   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css">
   </head>
   <body>
     <div class="navbar">
@@ -23,24 +22,14 @@
         <h1>{{ shift[0] }} {{ shift[1] }}</h1>
         {% endfor %}
     <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
-    <script>
-    import Calendar from '@event-calendar/core/src/Calendar.svelte';
-    import TimeGrid from '@event-calendar/time-grid/src/TimeGrid.svelte';
-
-    let plugins = [TimeGrid];
-    let options = {
-        view: 'timeGridWeek',
-        events: [
-            // your list of events
-        ]
-    };
-</script>
-
-<Calendar {plugins} {options} />
-
-
-
-\
+  <div id="calendar"></div>
+  <script>
+    
+    let calendarEl = document.getElementById('calendar');
+    
+    let calendar = new FullCalendar.Calendar(calendarEl,{});
+    calendar.render();
+  </script>
   </body>
 </html>
 
