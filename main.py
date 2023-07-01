@@ -24,35 +24,40 @@ app = Flask(__name__)
 app.secret_key = b"2234JHG3[]opuhmiy757n7ijNT756654"
 error = None
 
+
 @app.route('/')
 def index():
     if 'EMPID' in session:
         currentPunch = lastPunch(session['EMPID'])
         # Formatting duration of current shift
-        currentDuration,_,_ = str(currentShift(session['EMPID'])).partition('.')
+        currentDuration, _, _ = str(
+            currentShift(session['EMPID'])).partition('.')
         currentDuration = currentDuration[:-3]
     else:
         currentDuration = False
         currentPunch = False
     print(currentPunch)
-    return render_template('index.html',currentDuration = currentDuration, currentPunch = currentPunch)
+    return render_template('index.html', currentDuration=currentDuration, currentPunch=currentPunch)
 
-@app.route('/login',methods=['GET','POST'])
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         data = request.form.to_dict()
         if 'email' not in data or 'password' not in data:
             return redirect(url_for('index'))
-        if checkPassword(request.form['email'],request.form['password']):
+        if checkPassword(request.form['email'], request.form['password']):
             session['username'] = request.form['email']
-            session['permissions'] = getData(session['username'])['permissionType']
+            session['permissions'] = getData(session['username'])[
+                'permissionType']
             session['firstName'] = getData(session['username'])['firstName']
             session['EMPID'] = getData(session['username'])['employeeID']
             session['lastPunch'] = lastPunch(session['EMPID'])
         return redirect(url_for('index'))
     return render_template("login.html")
 
-@app.route('/addEmployee',methods=['GET','POST'])
+
+@app.route('/addEmployee', methods=['GET', 'POST'])
 def addEmployee():
     if request.method == 'POST':
         data = request.form.to_dict()
@@ -76,7 +81,7 @@ def addEmployee():
 
 @app.route('/shiftPunches', methods=['GET', 'POST'])
 def shiftPunches():
-    
+
     ID = getData(session['username'])['employeeID']
     if request.method == 'POST':
         data = request.form.get('punch')
@@ -88,13 +93,14 @@ def shiftPunches():
         return redirect(url_for('index'))
     session['lastPunch'] = lastPunch(ID)
     return render_template("shiftPunches.html")
-        
+
+
 @app.route('/timeWorked', methods=['GET', 'POST'])
 def timeWorked():
     ID = getData(session['username'])['employeeID']
     if request.method == 'POST':
         data = request.form.to_dict()
-        print(data)   
+        print(data)
         if data['dates'] == 'TODAY':
             print("today")
             output = today(ID)
@@ -103,32 +109,31 @@ def timeWorked():
         elif data['dates'] == 'WTD':
             output = weekToDay(ID)
             return render_template('timeWorked.html', output=output)
-        
+
         elif data['dates'] == 'MTD':
             output = monthToDay(ID)
             return render_template('timeWorked.html', output=output)
-            
+
         elif data['dates'] == 'CD':
             output = certainDate(ID, data['certainDate'])
             return render_template('timeWorked.html', output=output)
-            
+
         elif data['dates'] == 'CY':
             output = certainYear(ID, data['certainYear'])
             return render_template('timeWorked.html', output=output)
-            
+
         elif data['dates'] == 'CM':
             output = certainMonth(ID, data['certainMonth'])
             return render_template('timeWorked.html', output=output)
-            
+
         elif data['dates'] == 'BEFORE':
             output = beforeDate(ID, data["beforeDate"])
             return render_template('timeWorked.html', output=output)
 
-            
         elif data['dates'] == 'AFTER':
             output = afterDate(ID, data["afterDate"])
             return render_template('timeWorked.html', output=output)
-            
+
         elif data['dates'] == 'CUS':
             output = custom(ID, data["startDate"], data["endDate"])
             return render_template('timeWorked.html', output=output)
@@ -148,11 +153,11 @@ def addShifts():
         print(data['startTime'])
         print(data['endTime'])
         print(data['shiftType'])
-        
+
         shifts(data['employee'], data['startTime'],
-                  data['endTime'], data['shiftType'])
+               data['endTime'], data['shiftType'])
         return redirect(url_for('index'))
-    return render_template("addShifts.html", employees=employees) 
+    return render_template("addShifts.html", employees=employees)
 
 
 @app.route('/shifts', methods=['GET', 'POST'])
@@ -162,16 +167,18 @@ def shifts():
     print(allShifts)
     return render_template("shifts.html", allShifts=allShifts)
 
-       
+
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
 
+
 @app.route("/test")
 def tester():
     error = "Error applied"
     return redirect(url_for("index"))
+
 
 if __name__ == '__main__':
     app.debug = True

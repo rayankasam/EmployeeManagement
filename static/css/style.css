@@ -276,3 +276,11 @@ nav ul li a{
 .clock li.number:nth-child(12) {
     transform: rotate(360deg);
 }
+
+#calendar {
+  width: 70vw; 
+  height: 86vh;
+  padding-top: 10px;
+  padding-bottom:2px;
+  margin: 0px auto;
+}

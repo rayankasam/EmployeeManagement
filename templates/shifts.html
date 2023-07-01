@@ -16,13 +16,26 @@
       <a class="chere" href="/"><button class="logout">Logout</button></a>
     </nav>
   </div> 
-    {% for shift in allShifts %}
-        <h1>{{ shift[0] }} {{ shift[1] }}</h1>
-        {% endfor %}
-    <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
+
   <div id="calendar"></div>
     
-       <script src="{{ url_for('static', filename='dist/bundle.js') }}"></script>
+       <script src="{{ url_for('static', filename='dist/bundle.js') }}">
+
+            let calendarEl = document.getElementById('calendar');
+            
+            let calendar = new Calendar(calendarEl,{
+              aspectRatio: 2,
+              plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+              initialView: 'dayGridMonth',
+              headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,listWeek'
+          }
+
+          });
+            calendar.render();
+       </script>
 
 
   
