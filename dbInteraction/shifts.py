@@ -83,3 +83,31 @@ def lastPunch(EMPID):
         return punch[0]
     except Exception as e:
         print(e)
+
+
+def getShifts(ID):
+    db = mysql.connector.connect(
+        host=DB_IP,
+        port=DB_PORT,
+        user=DB_USER,
+        database="WFM_MAIN_INFO",
+        password=DB_PASSWORD
+    )
+    try:
+        mycursor = db.cursor()
+        mycursor.execute(
+            "SELECT startTime, endTime from shifts WHERE employeeID = %s", (ID,))
+        data = mycursor.fetchall()
+        mycursor.close()
+        db.close()
+        data = [list(x) for x in data]
+        
+        for x in range(len(data)):
+            data[x][1] = data[x][1].strftime('%Y-%m-%d %H:%M')
+            data[x][0] = data[x][0].strftime('%Y-%m-%d %H:%M')
+
+
+        return data
+    except Exception as error:
+       print(error)
+       return "no employees found"
