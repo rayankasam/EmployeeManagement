@@ -20,12 +20,21 @@
   <div id="calendar"></div>
     
        <script src="{{ url_for('static', filename='dist/bundle.js') }}">
-           var allShifts = JSON.parse('{{ allShifts | tojson | safe }}');
-            $(document).ready(function() {
-                $('#calendar').fullCalendar({
-                    events: allShifts
-                });
-            });
+            console.log( '{{ allShifts }}')
+            let calendarEl = document.getElementById('calendar');
+            
+            let calendar = new Calendar(calendarEl,{
+              aspectRatio: 2,
+              plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+              initialView: 'dayGridMonth',
+              headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,listWeek'
+          },
+              event: `{{ allShifts }}`
+          });
+            calendar.render();
        </script>
 
 

@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for, session, request
+from flask import Flask, redirect, render_template, url_for, session, request,  json
 from dbInteraction.addEmployee import addToDB
 from dbInteraction.checkPass import checkPassword
 from dbInteraction.time import punchIN
@@ -20,6 +20,8 @@ from dbInteraction.shifts import shifts
 from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
+from datetime import datetime
+
 app = Flask(__name__)
 app.secret_key = b"2234JHG3[]opuhmiy757n7ijNT756654"
 error = None
@@ -165,7 +167,19 @@ def shifts():
     empID = getData(session['username'])['employeeID']
     allShifts = getShifts(empID)
     print(allShifts)
-    return render_template("shifts.html", allShifts=allShifts)
+    shiftList = []
+    for shift in allShifts:
+        work = { 'title' : 'Shift',
+                 'start' : datetime.strptime(
+                     shift[0], '%Y-%m-%d %H:%M').strftime('%Y-%m-%dT%H:%M:%S'),
+
+                 'end' : datetime.strptime(
+                     shift[1], '%Y-%m-%d %H:%M').strftime('%Y-%m-%dT%H:%M:%S')}
+        shiftList.append(work)
+        total = len(shiftList)
+    shiftsJSon = json.dumps(shiftList)
+    print(shiftsJSon)
+    return render_template("shifts.html", allShifts=shiftList, total=total)
 
 
 @app.route('/logout')
