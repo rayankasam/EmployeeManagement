@@ -4,10 +4,8 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
-
-    <link href="css/style.css" rel="stylesheet">
-  </head>
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet"> 
+    </head>
   <body>
     <div class="navbar">
     <nav>
@@ -19,7 +17,18 @@
     </nav>
   </div> 
 
-    <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
+  <div id="calendar"></div>
+    
+       <script src="{{ url_for('static', filename='dist/bundle.js') }}">
+           var allShifts = JSON.parse('{{ allShifts | tojson | safe }}');
+            $(document).ready(function() {
+                $('#calendar').fullCalendar({
+                    events: allShifts
+                });
+            });
+       </script>
+
+
   
   </body>
 </html>

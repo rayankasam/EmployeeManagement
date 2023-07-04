@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet"> 
+    </head>
+  <body>
+    <div class="navbar">
+    <nav>
+      <ul class="navpagelinks">
+          <li><a href="{{ url_for('index') }}">Dashboard</a></li>
+          <li><a href="/">Shifts</a></li>
+      </ul>
+      <a class="chere" href="/"><button class="logout">Logout</button></a>
+    </nav>
+  </div> 
+
+  <div id="calendar"></div>
+    
+       <script src="{{ url_for('static', filename='dist/bundle.js') }}">
+            console.log( '{{ allShifts }}')
+            let calendarEl = document.getElementById('calendar');
+            
+            let calendar = new Calendar(calendarEl,{
+              aspectRatio: 2,
+              plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+              initialView: 'dayGridMonth',
+              headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,listWeek'
+          },
+              event: `{{ allShifts }}`
+          });
+            calendar.render();
+       </script>
+
+
+  
+  </body>
+</html>
+
