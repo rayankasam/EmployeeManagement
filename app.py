@@ -166,20 +166,16 @@ def addShifts():
 def shifts():
     empID = getData(session['username'])['employeeID']
     allShifts = getShifts(empID)
-    print(allShifts)
     shiftList = []
     for shift in allShifts:
-        work = { 'title' : 'Shift',
-                 'start' : datetime.strptime(
-                     shift[0], '%Y-%m-%d %H:%M').strftime('%Y-%m-%dT%H:%M:%S'),
+        work = {'title': 'Shift',
+                'start': datetime.strptime(
+                    shift[0], '%Y-%m-%d %H:%M').strftime('%Y-%m-%dT%H:%M:%S'),
 
-                 'end' : datetime.strptime(
-                     shift[1], '%Y-%m-%d %H:%M').strftime('%Y-%m-%dT%H:%M:%S')}
+                'end': datetime.strptime(
+                    shift[1], '%Y-%m-%d %H:%M').strftime('%Y-%m-%dT%H:%M:%S')}
         shiftList.append(work)
-        total = len(shiftList)
-    shiftsJSon = json.dumps(shiftList)
-    print(shiftsJSon)
-    return render_template("shifts.html", allShifts=shiftList, total=total)
+    return render_template("shifts.html", allShifts=shiftList)
 
 
 @app.route('/logout')

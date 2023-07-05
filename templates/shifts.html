@@ -5,7 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet"> 
-    </head>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          initialDate: '2023-06-07',
+          headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,list'
+          },
+          events: [
+            {%for shift in allShifts%}
+            {
+              title: '{{shift.title}}',
+              start: '{{shift.start}}',
+              end: '{{shift.end}}'
+            },
+            {% endfor %}
+          ]
+        });
+
+        calendar.render();
+      });
+    </script>
+  </head>
   <body>
     <div class="navbar">
     <nav>
@@ -18,15 +45,6 @@
   </div> 
 
   <div id="calendar"></div>
-    
-       <script src="{{ url_for('static', filename='dist/bundle.js') }}">
-           var allShifts = JSON.parse('{{ allShifts | tojson | safe }}');
-            $(document).ready(function() {
-                $('#calendar').fullCalendar({
-                    events: allShifts
-                });
-            });
-       </script>
 
 
   

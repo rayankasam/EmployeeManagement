@@ -1,2 +1,4 @@
 # Ignore the pycache directory
 __pycache__
+node_modules
+flaskenv
