@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amount Due</title>
+</head>
+<body>
+    <form method="post">
+        <select name="employee">
+        <option value="none">Select and Employee</option>
+        {% for employee in employees %}
+        <option value="{{ employee[2] }}">{{ employee[0] }} {{ employee[1] }} {{ employee[2] }}</option>
+        {% endfor %}
+        </select>
+        <p><input type=submit value=Submit>
+    </form>
+    <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
+</body>
+</html>

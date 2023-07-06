@@ -13,6 +13,7 @@ from dbInteraction.timeWorked import beforeDate
 from dbInteraction.timeWorked import afterDate
 from dbInteraction.timeWorked import certainMonth
 from dbInteraction.timeWorked import certainYear
+from dbInteraction.getAmountDue import getAmountDue
 from dbInteraction.shifts import getPeople
 from dbInteraction.shifts import getShifts
 from dbInteraction.shifts import lastPunch
@@ -145,6 +146,19 @@ def timeWorked():
     return render_template("timeWorked.html")
 
 
+@app.route('/amountDue', methods=['GET', 'POST'])
+def amountDue():
+    if session['permissions'] == 0:
+        employees = getPeople()
+        if request.method == 'POST':
+            employee = request.form.to_dict()['employee']
+            amountDue = getAmountDue(employee)
+            return render_template('amountDue.html', employees=employees, amount=amountDue)
+        return render_template('amountDue.html', employees=employees, amount=False)
+    else:
+        return redirect(url_for('index'))
+
+
 @app.route('/addShifts', methods=['GET', 'POST'])
 def addShifts():
     employees = getPeople()
@@ -182,12 +196,6 @@ def shifts():
 def logout():
     session.clear()
     return redirect(url_for('index'))
-
-
-@app.route("/test")
-def tester():
-    error = "Error applied"
-    return redirect(url_for("index"))
 
 
 if __name__ == '__main__':
