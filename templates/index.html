@@ -16,6 +16,7 @@
         {% if session['permissions'] == 0 %}
         <a href="{{ url_for('addEmployee') }}"> <button type="button" class="btn btn-primary">Add an Employee</button></a>
         <a href="{{ url_for('addShifts') }}"><button type="button" class="btn btn-primary">Add Employee Shifs</button></a>
+        <a href="{{ url_for('amountDue') }}"><button type="button" class="btn btn-primary">Owed to Employee</button></a>
          
         {% endif %}
         <a href="{{ url_for('shiftPunches') }}"><button type="button" class="btn btn-primary">Shift Punches</button></a>
