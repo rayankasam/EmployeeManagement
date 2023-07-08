@@ -105,48 +105,39 @@ def timeWorked():
         data = request.form.to_dict()
         print(data)
         if data['dates'] == 'TODAY':
-            print("today")
             output = today(ID)
-            return render_template('timeWorked.html', output=output)
 
         elif data['dates'] == 'WTD':
             output = weekToDay(ID)
-            return render_template('timeWorked.html', output=output)
 
         elif data['dates'] == 'MTD':
             output = monthToDay(ID)
-            return render_template('timeWorked.html', output=output)
 
         elif data['dates'] == 'CD':
             output = certainDate(ID, data['certainDate'])
-            return render_template('timeWorked.html', output=output)
 
         elif data['dates'] == 'CY':
             output = certainYear(ID, data['certainYear'])
-            return render_template('timeWorked.html', output=output)
 
         elif data['dates'] == 'CM':
             output = certainMonth(ID, data['certainMonth'])
-            return render_template('timeWorked.html', output=output)
 
         elif data['dates'] == 'BEFORE':
             output = beforeDate(ID, data["beforeDate"])
-            return render_template('timeWorked.html', output=output)
 
         elif data['dates'] == 'AFTER':
             output = afterDate(ID, data["afterDate"])
-            return render_template('timeWorked.html', output=output)
 
         elif data['dates'] == 'CUS':
             output = custom(ID, data["startDate"], data["endDate"])
-            return render_template('timeWorked.html', output=output)
 
         else:
             return render_template("timeWorked.html")
+        return render_template('timeWorked.html', output=output)
     return render_template("timeWorked.html")
 
 
-@app.route('/amountDue', methods=['GET', 'POST'])
+@app.route('/amountdue', methods=['GET', 'POST'])
 def amountDue():
     if session['permissions'] == 0:
         employees = getPeople()
@@ -164,11 +155,6 @@ def addShifts():
     employees = getPeople()
     if request.method == 'POST':
         data = request.form.to_dict()
-        print(data)
-        print(data['employee'])
-        print(data['startTime'])
-        print(data['endTime'])
-        print(data['shiftType'])
 
         shifts(data['employee'], data['startTime'],
                data['endTime'], data['shiftType'])

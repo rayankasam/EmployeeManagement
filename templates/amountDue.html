@@ -15,6 +15,9 @@
         </select>
         <p><input type=submit value=Submit>
     </form>
+    {% if amount %}
+        <p>{{ amount }}</p>
+    {% endif %}
     <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
 </body>
 </html>

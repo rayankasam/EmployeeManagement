@@ -30,19 +30,29 @@ def getAmountDue(employee):
     )
 
     employeePay = mycursor.fetchone()
-    print(employeePay)
-    rate = employeePay['wage']
+    rate = int(employeePay['wage'])
+
     # Ignores shift if in progress
     if len(punches) % 2 == 1:
         punches.pop(0)
+
+    # Starts with first ever punch
     punches = punches[::-1]
-    shiftStart = None
+
+    # Adds up the total time of each shift
     totalTime = timedelta(0)
     for idx, punch in enumerate(punches):
         if idx % 2 == 0:
             shiftStart = punch
         else:
             totalTime += punch['dateAndTime'] - shiftStart['dateAndTime']
-    for punch in punches:
-        print(punch['dateAndTime'])
-    owed = totalTime.seconds()//3600 * rate
+    totalDue = totalTime.total_seconds() // 3600 * rate
+
+    # Getting total already paid
+    mycursor.execute(
+        'SELECT paymentAmount FROM Payments WHERE employeeID = %s', (employee,))
+    totalPaid = 0
+    for payment in mycursor.fetchall():
+        totalPaid += float(payment['paymentAmount'])
+
+    return f"${totalDue - totalPaid}"
