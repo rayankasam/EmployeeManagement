@@ -15,8 +15,15 @@
         </select>
         <p><input type=submit value=Submit>
     </form>
-    {% if amount %}
-        <p>{{ amount }}</p>
+    {% if amountDueData %}
+        <p>This employee is due {{ amountDueData['amount'] }}</p>
+        <h3>Payment Information</h3>
+        <p>bankCode: {{amountDueData['bankCode']}}</p>
+        <p>transitNum: {{amountDueData['transitNum']}}</p>
+        <p>wage: {{amountDueData['wage']}}</p>
+        <p>payStructure: {{amountDueData['payStructure']}}</p>
+        <p>accountNum: {{amountDueData['accountNum']}}</p>
+        
     {% endif %}
     <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
 </body>

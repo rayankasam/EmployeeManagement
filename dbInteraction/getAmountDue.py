@@ -4,6 +4,11 @@ from dotenv import load_dotenv
 from pathlib import Path
 from datetime import datetime, timedelta, date
 
+
+class NotInDatabase(Exception):
+    ...
+
+
 load_dotenv(Path('./database.env'))
 DB_IP = os.getenv('IP')
 DB_PORT = os.getenv('PORT')
@@ -25,12 +30,15 @@ def getAmountDue(employee):
         'SELECT dateAndTime, punchType FROM timetable WHERE employeeID = %s ORDER BY dateAndTime DESC', (employee,))
     punches = mycursor.fetchall()
 
+    # Getting wage
     mycursor.execute(
         'SELECT * FROM employeePay where employeeID = %s', (employee,)
     )
-
-    employeePay = mycursor.fetchone()
-    rate = int(employeePay['wage'])
+    try:
+        employeePay = mycursor.fetchone()
+        rate = int(employeePay['wage'])
+    except:
+        raise NotInDatabase
 
     # Ignores shift if in progress
     if len(punches) % 2 == 1:
@@ -55,4 +63,12 @@ def getAmountDue(employee):
     for payment in mycursor.fetchall():
         totalPaid += float(payment['paymentAmount'])
 
-    return f"${totalDue - totalPaid}"
+    # Returning all the data required
+    data = {}
+    data['amount'] = f"${totalDue - totalPaid}"
+    data['payStructure'] = employeePay['payStructure']
+    data['wage'] = float(employeePay['wage'])
+    data['bankCode'] = employeePay['bankCode']
+    data['transitNum'] = employeePay['transitNum']
+    data['accountNum'] = employeePay['accountNum']
+    return data

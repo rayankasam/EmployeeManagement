@@ -143,9 +143,9 @@ def amountDue():
         employees = getPeople()
         if request.method == 'POST':
             employee = request.form.to_dict()['employee']
-            amountDue = getAmountDue(employee)
-            return render_template('amountDue.html', employees=employees, amount=amountDue)
-        return render_template('amountDue.html', employees=employees, amount=False)
+            amountDueData = getAmountDue(employee)
+            return render_template('amountDue.html', employees=employees, amountDueData=amountDueData)
+        return render_template('amountDue.html', employees=employees, amountDueData=False)
     else:
         return redirect(url_for('index'))
 
