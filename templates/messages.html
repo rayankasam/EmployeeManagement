@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <script >
+        const deg = 6;
+        const hr = document.querySelector('#hr');
+        const min = document.querySelector('#min');
+        const sec = document.querySelector('#sec');
+
+      setInterval(() => {
+          let day = new Date();
+          let hh = day.getHours() * 30;
+          let mm = day.getMinutes() * deg;
+          let ss = day.getSeconds() * deg;
+
+          hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+          min.style.transform = `rotateZ(${mm}deg)`;
+          sec.style.transform = `rotateZ(${ss}deg)`;
+      })
+    </script>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <nav>
+        <ul class="navpagelinks">
+            <li><a href="{{ url_for('index') }}">Dashboard</a></li>
+            <li><a href="/">Shifts</a></li>
+        </ul>
+        <a class="chere" href="/"><button class="logout">Logout</button></a>
+      </nav>
+    </div> 
+     
+    <form method="post" class="Forms">
+     <select name="employee">
+        <option value="none">Select and Employee</option>
+        {% for employee in employees %}
+        <option value="{{ employee[2] }}">{{ employee[0] }} {{ employee[1] }} {{ employee[2] }}</option>
+        {% endfor %}
+      </select>
+      <label for="Subject">Subject</label>
+      <p><input type=text name=subject class="form-control" placeholder="Subject">
+      <label for="Message">Message</label>
+      <textarea type="text" name="message" placeholder="Type your message here" class="form-control"></textarea>
+      <p><input type=submit value=Submit class="btn btn-primary">
+    </form>
+    <a href="{{ url_for('index') }}"><button>Back to DashBoard</button></a>
+
+    
+  </body>
+</html>
+

@@ -11,7 +11,7 @@ DB_PASSWORD = os.getenv('PASSWORD')
 DB_USER = os.getenv('USERNAME')
 
 
-def timeWorked(shifts):
+def timeWorked(shifts, ID):
 
     # case where last punch is a punchin, this would get the next punch after.
     if shifts[-1][3] == 'IN':
@@ -35,7 +35,7 @@ def timeWorked(shifts):
 
     timeWorked = timedelta(hours=0, minutes=0, seconds=0)
 
-    for x in range(len(shifts) - 1):
+    for x in range(len(shifts) - 2):
         if (shifts[x][3] == 'IN' and shifts[x+1][3] == 'OUT'):
             print(str(shifts[x+1][1]))
             print(str(shifts[x][1]))
@@ -76,7 +76,7 @@ def today(ID):
                       datetime.strptime(str(shifts[-1][1]), "%Y-%m-%d %H:%M:%S"))
         shifts = shifts[:-1]
     if len(shifts) > 1:
-        totalTime += timeWorked(shifts)
+        totalTime += timeWorked(shifts, ID )
     return totalTime
 
 
@@ -102,7 +102,7 @@ def weekToDay(ID):
         return 0
     for c in shifts:
         print(c[0], " ", c[1], " ", c[2])
-    return timeWorked(shifts)
+    return timeWorked(shifts, ID)
 
 
 def monthToDay(ID):
@@ -127,7 +127,7 @@ def monthToDay(ID):
         return 0
     for c in shifts:
         print(c[0], " ", c[1], " ", c[2])
-    return timeWorked(shifts)
+    return timeWorked(shifts, ID)
 
 
 def custom(ID, start, end):
@@ -149,7 +149,7 @@ def custom(ID, start, end):
     db.close()
     for c in shifts:
         print(c[0], " ", c[1], " ", c[2])
-    return timeWorked(shifts)
+    return timeWorked(shifts, ID)
 
 
 def certainDate(ID, certainDate):
@@ -181,7 +181,7 @@ def certainDate(ID, certainDate):
                       datetime.strptime(str(shifts[-1][1]), "%Y-%m-%d %H:%M:%S"))
         shifts = shifts[:-1]
     if len(shifts) > 1:
-        totalTime += timeWorked(shifts)
+        totalTime += timeWorked(shifts, ID)
     return totalTime
 
 
@@ -204,7 +204,7 @@ def beforeDate(ID, dateEntered):
     db.close()
     for c in shifts:
         print(c[0], " ", c[1], " ", c[2])
-    return timeWorked(shifts)
+    return timeWorked(shifts, ID)
 
 
 def afterDate(ID, dateEntered):
@@ -225,7 +225,7 @@ def afterDate(ID, dateEntered):
     db.close()
     for c in shifts:
         print(c[0], " ", c[1], " ", c[2])
-    return timeWorked(shifts)
+    return timeWorked(shifts, ID)
 
 
 def certainMonth(ID, dateEntered):
@@ -246,7 +246,7 @@ def certainMonth(ID, dateEntered):
     db.close()
     for c in shifts:
         print(c[0], " ", c[1], " ", c[2])
-    return timeWorked(shifts)
+    return timeWorked(shifts, ID)
 
 
 def certainYear(ID, dateEntered):
@@ -267,4 +267,4 @@ def certainYear(ID, dateEntered):
     db.close()
     for c in shifts:
         print(c[0], " ", c[1], " ", c[2])
-    return timeWorked(shifts)
+    return timeWorked(shifts, ID)

@@ -18,6 +18,7 @@ from dbInteraction.shifts import getPeople
 from dbInteraction.shifts import getShifts
 from dbInteraction.shifts import lastPunch
 from dbInteraction.shifts import shifts
+from dbInteraction.messages import sendMessages
 from dbInteraction.time import punchOut
 from dbInteraction.getData import getData
 from applySpecs import allowedAddEmployee
@@ -176,6 +177,16 @@ def shifts():
                     shift[1], '%Y-%m-%d %H:%M').strftime('%Y-%m-%dT%H:%M:%S')}
         shiftList.append(work)
     return render_template("shifts.html", allShifts=shiftList)
+
+@app.route('/messages', methods=['GET', 'POST'])
+def messages():
+    employees = getPeople()
+    empID = getData(session['username'])['employeeID']
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        sendMessages(empID, data['employee'], data['subject'], data['message'])
+        return redirect(url_for('index'))
+    return render_template("messages.html", employees=employees)
 
 
 @app.route('/logout')
