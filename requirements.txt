@@ -1,6 +1,6 @@
-mysql
-dotenv
+mysql-connector-python
+python-dotenv
 pathlib
 datetime
-argon2
+argon2-cffi
 flask-login
